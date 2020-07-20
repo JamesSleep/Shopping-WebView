@@ -5,7 +5,7 @@ platform :ios, '10.0'
 
 target 'shopWebview' do
   config = use_native_modules!
-
+  pod 'Firebase/Analytics'
   use_react_native!(:path => config["reactNativePath"])
 
   target 'shopWebviewTests' do

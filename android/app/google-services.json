@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "55950772700",
+    "firebase_url": "https://shopwebview-f7f50.firebaseio.com",
+    "project_id": "shopwebview-f7f50",
+    "storage_bucket": "shopwebview-f7f50.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:55950772700:android:7f155990676455d4a1e719",
+        "android_client_info": {
+          "package_name": "com.shopwebview"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "55950772700-0pfd5vnffn5v1v0q9g45cft4rbvbd65d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA-b8JHZMYuSq-xV2yBf51Xbvjh9V8AFvo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "55950772700-0pfd5vnffn5v1v0q9g45cft4rbvbd65d.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "55950772700-2foietfq7urhrfa9ciaoqvrphab8u3nj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "org.reactjs.native.example.shopWebview"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

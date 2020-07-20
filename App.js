@@ -4,6 +4,7 @@ import { View, StatusBar, StyleSheet, TouchableOpacity,
 import { WebView } from 'react-native-webview';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import SplashScreen from 'react-native-splash-screen';
+import FCMContainer from './src/components/FCMContainer';
 
 const SITE_URL = "https://3456shop.com/";
 
@@ -73,7 +74,7 @@ const App = () => {
   }
   
   return (
-    <>
+    <FCMContainer>
       <StatusBar barStyle="dark-content" backgroundColor="white"/>
       <View style={styles.container}>
         <View style={styles.webView}>
@@ -103,7 +104,7 @@ const App = () => {
           </KeyboardAvoidingView>
         </View>
       </View>
-    </>
+    </FCMContainer>
   );
 };
 
