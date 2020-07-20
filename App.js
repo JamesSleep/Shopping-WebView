@@ -3,7 +3,6 @@ import { View, StatusBar, StyleSheet, TouchableOpacity,
   ToastAndroid, BackHandler, Alert, Platform, Linking, KeyboardAvoidingView } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
-import Icon from 'react-native-vector-icons/FontAwesome';
 import SplashScreen from 'react-native-splash-screen';
 
 const SITE_URL = "https://3456shop.com/";
@@ -103,22 +102,6 @@ const App = () => {
             />
           </KeyboardAvoidingView>
         </View>
-        { Platform.OS === 'android'?
-          null :
-          <View style={styles.nav}>
-          <TouchableOpacity style={styles.nav_bnt} onPress={page_goBack}>
-            <Icon style={styles.fonts} name="angle-left"/>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.nav_bnt} onPress={page_home}>
-            <Icon style={styles.fonts} name="home"/>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.nav_bnt} onPress={page_goForward}>
-            <Icon style={styles.fonts} name="angle-right"/>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.nav_bnt} onPress={category}>
-            <Icon style={styles.fonts} name="align-justify"/>
-          </TouchableOpacity>
-        </View> }  
       </View>
     </>
   );
