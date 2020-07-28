@@ -18,7 +18,7 @@
 		2DCD954D1E0B4F2C00145EB5 /* shopWebviewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* shopWebviewTests.m */; };
 		30294C8E2BBFED0AAFC09C68 /* libPods-shopWebview-shopWebviewTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5051EF9D563146842154E2CD /* libPods-shopWebview-shopWebviewTests.a */; };
 		394C217B24C566FE00E1E983 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 394C217A24C566FE00E1E983 /* SplashScreen.storyboard */; };
-		399CD84324C580FB00A4EF99 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 399CD84224C580FA00A4EF99 /* GoogleService-Info.plist */; };
+		39829ECB24CF317C003F6E1E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39829ECA24CF317C003F6E1E /* GoogleService-Info.plist */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		9E4435AAF234D9D97BE358BB /* libPods-shopWebview-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 589F025F81B86D86DDE3835D /* libPods-shopWebview-tvOS.a */; };
 		E9CAD461009CB0FF01197319 /* libPods-shopWebview.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D8828DF34A9119139C41EC /* libPods-shopWebview.a */; };
@@ -73,7 +73,7 @@
 		394C217824C5626900E1E983 /* Ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Ionicons.ttf; sourceTree = "<group>"; };
 		394C217924C5626900E1E983 /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
 		394C217A24C566FE00E1E983 /* SplashScreen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SplashScreen.storyboard; sourceTree = "<group>"; };
-		399CD84224C580FA00A4EF99 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		39829ECA24CF317C003F6E1E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		399CD84424C5835B00A4EF99 /* shopWebview.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = shopWebview.entitlements; path = shopWebview/shopWebview.entitlements; sourceTree = "<group>"; };
 		435342449FB703CDD3222A33 /* Pods-shopWebview-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shopWebview-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-shopWebview-tvOS/Pods-shopWebview-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		4A2D452C7B9760C4F8CFF2A6 /* Pods-shopWebview-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shopWebview-tvOS.release.xcconfig"; path = "Target Support Files/Pods-shopWebview-tvOS/Pods-shopWebview-tvOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -151,11 +151,11 @@
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				39829ECA24CF317C003F6E1E /* GoogleService-Info.plist */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 				394C217A24C566FE00E1E983 /* SplashScreen.storyboard */,
-				399CD84224C580FA00A4EF99 /* GoogleService-Info.plist */,
 			);
 			name = shopWebview;
 			sourceTree = "<group>";
@@ -335,12 +335,14 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					00E356ED1AD99517003FC87E = {
 						CreatedOnToolsVersion = 6.2;
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = 49BJL63GK4;
 						LastSwiftMigration = 1120;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
@@ -388,7 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
-				399CD84324C580FB00A4EF99 /* GoogleService-Info.plist in Resources */,
+				39829ECB24CF317C003F6E1E /* GoogleService-Info.plist in Resources */,
 				394C217B24C566FE00E1E983 /* SplashScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 			);
@@ -770,6 +772,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = shopWebview/shopWebview.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 49BJL63GK4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = shopWebview/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -794,6 +797,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = shopWebview/shopWebview.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 49BJL63GK4;
 				INFOPLIST_FILE = shopWebview/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (

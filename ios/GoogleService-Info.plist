@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>55950772700-2foietfq7urhrfa9ciaoqvrphab8u3nj.apps.googleusercontent.com</string>
+	<string>842221328247-41ehtgu54bpoi4q7ug2gklmaphh3u6jr.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.55950772700-2foietfq7urhrfa9ciaoqvrphab8u3nj</string>
+	<string>com.googleusercontent.apps.842221328247-41ehtgu54bpoi4q7ug2gklmaphh3u6jr</string>
 	<key>API_KEY</key>
-	<string>AIzaSyDSBwtImtmqhcZ0NWgDLoAxPsiZVu5B_qA</string>
+	<string>AIzaSyC5100_VvbLmw_SXSjSSZfy2N64Q4mbpQ0</string>
 	<key>GCM_SENDER_ID</key>
-	<string>55950772700</string>
+	<string>842221328247</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>org.reactjs.native.example.shopWebview</string>
 	<key>PROJECT_ID</key>
-	<string>shopwebview-f7f50</string>
+	<string>project-7422456198691077574</string>
 	<key>STORAGE_BUCKET</key>
-	<string>shopwebview-f7f50.appspot.com</string>
+	<string>project-7422456198691077574.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:55950772700:ios:36f6ec7b0a552ceda1e719</string>
+	<string>1:842221328247:ios:cb5f3599731a9ab264f372</string>
 	<key>DATABASE_URL</key>
-	<string>https://shopwebview-f7f50.firebaseio.com</string>
+	<string>https://project-7422456198691077574.firebaseio.com</string>
 </dict>
 </plist>
