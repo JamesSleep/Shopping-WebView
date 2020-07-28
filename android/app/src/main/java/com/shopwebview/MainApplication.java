@@ -1,4 +1,4 @@
-package com.shopwebview;
+package com.shop3456.newapp;
 
 import android.app.Application;
 import android.content.Context;

@@ -1,38 +1,38 @@
 {
   "project_info": {
-    "project_number": "55950772700",
-    "firebase_url": "https://shopwebview-f7f50.firebaseio.com",
-    "project_id": "shopwebview-f7f50",
-    "storage_bucket": "shopwebview-f7f50.appspot.com"
+    "project_number": "842221328247",
+    "firebase_url": "https://project-7422456198691077574.firebaseio.com",
+    "project_id": "project-7422456198691077574",
+    "storage_bucket": "project-7422456198691077574.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:55950772700:android:7f155990676455d4a1e719",
+        "mobilesdk_app_id": "1:842221328247:android:344afd75b7f14a4064f372",
         "android_client_info": {
-          "package_name": "com.shopwebview"
+          "package_name": "com.shop3456.newapp"
         }
       },
       "oauth_client": [
         {
-          "client_id": "55950772700-0pfd5vnffn5v1v0q9g45cft4rbvbd65d.apps.googleusercontent.com",
+          "client_id": "842221328247-49u1eu36r8a8b9q7ud077pq6e6klejme.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyA-b8JHZMYuSq-xV2yBf51Xbvjh9V8AFvo"
+          "current_key": "AIzaSyBRC7gMaAmM0v8I4FkYl6ibyGbn68fxrxw"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "55950772700-0pfd5vnffn5v1v0q9g45cft4rbvbd65d.apps.googleusercontent.com",
+              "client_id": "842221328247-49u1eu36r8a8b9q7ud077pq6e6klejme.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "55950772700-2foietfq7urhrfa9ciaoqvrphab8u3nj.apps.googleusercontent.com",
+              "client_id": "842221328247-41ehtgu54bpoi4q7ug2gklmaphh3u6jr.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
                 "bundle_id": "org.reactjs.native.example.shopWebview"

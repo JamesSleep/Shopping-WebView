@@ -1,4 +1,4 @@
-package com.shopwebview;
+package com.shop3456.newapp;
 
 import android.os.Bundle;
 import org.devio.rn.splashscreen.SplashScreen;
