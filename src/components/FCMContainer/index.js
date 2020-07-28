@@ -6,8 +6,8 @@ import Axios from 'axios';
 
 const FCMContainer = ({ children, onNotificationOpened }) => {
   const CHANNEL_ID = 'io.github.dev.yakuza.poma';
-  const APP_NAME = 'POMA';
-  const DESCRIPTION = 'POMA channel';
+  const APP_NAME = '3456#';
+  const DESCRIPTION = '3456# channel';
 
   let _onTokenRefreshListener = undefined;
   let _notificationDisplayedListener = undefined;
