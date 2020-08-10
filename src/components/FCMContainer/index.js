@@ -57,23 +57,13 @@ const FCMContainer = ({ children, onNotificationOpened }) => {
 
   const _registerToken = async (fcmToken) => {
     console.log(fcmToken);
-    // try {
-    //   const deviceUniqueId = DeviceInfo.getUniqueId();
-    //   const token = await AsyncStorage.getItem('token');
-    //   await Axios.post(
-    //     `URL`,
-    //     {
-    //       token: fcmToken,
-    //       device_unique_id,
-    //     },
-    //     {
-    //       headers: { Authorization: 'Bearer ' + token },
-    //     },
-    //   );
-    // } catch (error) {
-    //   console.log('ERROR: _registerToken');
-    //   console.log(error.response.data);
-    // }
+    try {
+      const deviceUniqueId = DeviceInfo.getUniqueId();
+      const token = await AsyncStorage.setItem("token", fcmToken);
+    } catch (error) {
+      console.log('ERROR: _registerToken');
+      console.log(error.response.data);
+    }
   };
 
   const _registerTokenRefreshListener = () => {

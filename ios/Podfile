@@ -9,7 +9,7 @@ target 'shopWebview' do
 
   pod 'Firebase/Core'
   pod 'Firebase/Analytics' 
-  pod 'Firebase/Messaging', '~> 6.2.0
+  pod 'Firebase/Messaging'
 
   target 'shopWebviewTests' do
     inherit! :complete

@@ -1,10 +1,11 @@
 import React, { useRef, useState, useEffect } from 'react';
-import { View, StatusBar, StyleSheet, TouchableOpacity,
-  ToastAndroid, BackHandler, Alert, Platform, Linking, KeyboardAvoidingView } from 'react-native';
+import { View, StatusBar, StyleSheet, TouchableOpacity, AsyncStorage,
+  ToastAndroid, BackHandler, Alert, Platform, Linking, KeyboardAvoidingView, SafeAreaView } from 'react-native';
 import { WebView } from 'react-native-webview';
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import SplashScreen from 'react-native-splash-screen';
 import FCMContainer from './src/components/FCMContainer';
+import axios from "axios";
 
 const SITE_URL = "https://3456shop.com/";
 
@@ -72,10 +73,36 @@ const App = () => {
       `
     );
   }
-  
+  const injectedJavascript = '(function() { window.postMessage = function(data) {window.ReactNativeWebView.postMessage(data);};})()';
+
+  const onWebViewMessage = async event => {
+    console.log("Message received from webview");
+    console.log(event.nativeEvent.data);
+    const data = JSON.stringify(event.nativeEvent.data);
+    if(data.toString().indexOf("user") === -1) {
+      if(Platform.OS === "android") ToastAndroid.show(event.nativeEvent.data, ToastAndroid.SHORT);
+      else Alert.alert(event.nativeEvent.data);
+    } else {
+      const user_index = data.substring(14, data.length - 1);
+      const form = new FormData();
+      const token = await AsyncStorage.getItem('token');
+      form.append("fb_key", token);   
+      form.append("index_no", user_index);    
+      const urls = "https://3456shop.com/api/app.php";
+      axios.post(urls,form)
+      .then(res => {
+        console.log(res);
+      })
+    }
+  }
+
   return (
     <FCMContainer>
-      <StatusBar barStyle="dark-content" backgroundColor="white"/>
+        <StatusBar 
+          translucent={false}
+          backgroundColor={Platform.OS === "android" ? "white" : "white"}
+          barStyle="dark-content"
+        />
       <View style={styles.container}>
         <View style={styles.webView}>
           <KeyboardAvoidingView
@@ -86,10 +113,8 @@ const App = () => {
             <WebView 
               source={{ uri: SITE_URL}}
               ref={webViews}
-              onMessage={(event)=> {
-                if(Platform.OS === "android") ToastAndroid.show(event.nativeEvent.data, ToastAndroid.SHORT);
-                else Alert.alert(event.nativeEvent.data);
-              }}
+              onMessage={(event)=>onWebViewMessage(event)}
+              injectedJavaScript={injectedJavascript}
               onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
               onNavigationStateChange={onNavigationStateChange}
               javaScriptEnabledAndroid={true}
@@ -109,13 +134,14 @@ const App = () => {
 };
 
 const marginH = getStatusBarHeight(true);
+
 const styles = StyleSheet.create({
   container: {
     borderTopWidth:1,
     borderColor:"#eee",
-    marginTop:marginH,
     flex: 1,
     backgroundColor: 'white',
+    marginTop: marginH,
   },
   webView: {
     flex: 12,
@@ -136,7 +162,7 @@ const styles = StyleSheet.create({
   },
   fonts:{
       fontSize:25,
-  }
+  },
 });
 
 export default App;
