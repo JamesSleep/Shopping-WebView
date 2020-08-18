@@ -1,10 +1,13 @@
 import React, { useEffect } from 'react';
 import { Platform, Alert, AsyncStorage } from 'react-native';
-import firebase from 'react-native-firebase';
+import firebase, { notifications } from 'react-native-firebase';
 import DeviceInfo from 'react-native-device-info';
 import Axios from 'axios';
+import { connect } from "react-redux";
+import ActionCreators from '../redux/action';
 
-const FCMContainer = ({ children, onNotificationOpened }) => {
+
+const FCMContainer = ({ children, onNotificationOpened, url, UrlUpdate }) => {
   const CHANNEL_ID = 'io.github.dev.yakuza.poma';
   const APP_NAME = '3456#';
   const DESCRIPTION = '3456# channel';
@@ -13,6 +16,12 @@ const FCMContainer = ({ children, onNotificationOpened }) => {
   let _notificationDisplayedListener = undefined;
   let _notificationListener = undefined;
   let _notificationOpenedListener = undefined;
+
+  const urlHandler = url => {
+    console.log("fcmDATA :", url);
+    UrlUpdate("");
+    UrlUpdate(url);
+  }
 
   const _registerMessageListener = () => {
     firebase
@@ -42,13 +51,17 @@ const FCMContainer = ({ children, onNotificationOpened }) => {
       // Process your notification as required
       notification.android.setPriority(firebase.notifications.Android.Priority.Max);
       notification.android.setChannelId(CHANNEL_ID);
-
+      notification.android.setAutoCancel(true);
+      // get notification and set load url
+      //urlHandler(notification.data.url);
+      console.log("respone FCM :", notification);
       firebase.notifications().displayNotification(notification);
     });
-    _notificationDisplayedListener = firebase.notifications().onNotificationDisplayed(() => {});
+    _notificationDisplayedListener = firebase.notifications().onNotificationDisplayed(() => { console.log("display") });
     _notificationOpenedListener = firebase
       .notifications()
       .onNotificationOpened((notificationOpen) => {
+        urlHandler(notificationOpen.notification.data.url);
         if (onNotificationOpened && typeof onNotificationOpened === 'function') {
           onNotificationOpened(notificationOpen.notification.data);
         }
@@ -96,7 +109,7 @@ const FCMContainer = ({ children, onNotificationOpened }) => {
       await _updateTokenToServer();
     } catch (error) {
       // User has rejected permissions
-      Alert.alert("you can't handle push notification");
+      //Alert.alert("you can't handle push notification");
     }
   };
 
@@ -146,4 +159,17 @@ const FCMContainer = ({ children, onNotificationOpened }) => {
   return children;
 };
 
-export default FCMContainer;
+const mapStateToProps = state => {
+  return {
+    url: state.url
+  };
+}
+const mapDispatchToProps = dispatch => {
+  return {
+    UrlUpdate: (url) => {
+      dispatch(ActionCreators.UrlUpdate(url));
+    },
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(FCMContainer);
