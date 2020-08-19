@@ -56,7 +56,7 @@ const FCMContainer = ({ children, onNotificationOpened, url, UrlUpdate }) => {
       //urlHandler(notification.data.url);
       console.log("respone FCM :", notification);
       firebase.notifications().displayNotification(notification);
-      console.log(notification);
+      console.log(notification.android.bigPicture);
     });
     _notificationDisplayedListener = firebase.notifications().onNotificationDisplayed(() => { console.log("display") });
     _notificationOpenedListener = firebase

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { View, StyleSheet, KeyboardAvoidingView, BackHandler, AsyncStorage } from "react-native";
+import { View, StyleSheet, KeyboardAvoidingView, BackHandler, AsyncStorage, Linking, Alert } from "react-native";
 import WebView from "react-native-webview";
 import { connect } from "react-redux";
 import ActionCreators from "../redux/action";
@@ -12,12 +12,12 @@ function WebViews( props, context ) {
   console.log("WebView props:", props);
   const [urls, seTurls] = useState(SITE_URL);
   useEffect(() => {
-    if(props.url !== "") {
+    if(props.url !== "" || props.url !== SITE_URL) {
       let getURL = "";
       getURL = props.url;
       webViews.current.injectJavaScript(`window.location.href = '/${getURL.substr(21,getURL.length-1)}';`)
     }
-  }, [props.url])
+  }, [props.url]);
   const webViews = useRef();
   const page_goBack = () => webViews.current.goBack();
   const page_home = () => webViews.current.injectJavaScript("window.location.href = '/';");
@@ -47,10 +47,14 @@ function WebViews( props, context ) {
     return rs;
   }
   const onNavigationStateChange = (webViewState)=>{
-    //webViews.current.injectJavaScript(`window.location.href = '${webViewState.url}';`);
+    console.log("stateURL :", webViewState.url);
+    seTurls(webViewState.url);
+    BackHandler.addEventListener('hardwareBackPress', handleBackButton);
   }
   const handleBackButton = () => {
-    if(urls === SITE_URL){
+    console.log("setURL :", urls);
+    webViews.current.goBack();
+    /* if(urls === SITE_URL){
       Alert.alert(
         '어플을 종료할까요?','',
         [   
@@ -60,7 +64,7 @@ function WebViews( props, context ) {
       );
     }else {
       webViews.current.goBack(); 
-    }
+    } */
     return true;
   }
   const alertHandler = () => {
@@ -124,6 +128,8 @@ function WebViews( props, context ) {
           renderLoading={true}
           mediaPlaybackRequiresUserAction={false}
           setJavaScriptEnabled = {false}
+          sharedCookiesEnabled={true}
+          allowsInlineMediaPlayback="true"
           scalesPageToFit={false}
           originWhitelist={['*']}
           onLoadEnd={alertHandler}

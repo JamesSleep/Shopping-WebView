@@ -34,3 +34,7 @@ target 'shopWebview-tvOS' do
     # Pods for testing
   end
 end
+
+target 'Service' do
+  pod 'Firebase/Messaging'
+end

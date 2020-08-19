@@ -22,14 +22,22 @@ const App = () => {
   return (
     <Provider store={createStore(reducer)}>
       <FCMContainer>
-        <StatusBar 
-          translucent={false}
-          backgroundColor={Platform.OS === "android" ? "white" : "red"}
-          barStyle={Platform.OS === "android" ? "dark-content" : "default"}
-        />
-        <View style={styles.container}>
-          <WebViews />
-        </View>
+        { Platform.OS === "ios" ? (
+          <View style={{ width: "100%", height: getStatusBarHeight(true), backgroundColor: "#7EBD42" }}>
+            <StatusBar />
+          </View>
+        ) : (
+          <StatusBar 
+            translucent={false}
+            backgroundColor="white"
+            barStyle="dark-content"
+          />
+        )}
+        <SafeAreaView style={{flex: 1}}>
+          <View style={styles.container}>
+            <WebViews />
+          </View>
+        </SafeAreaView>
       </FCMContainer>
     </Provider>
   );
