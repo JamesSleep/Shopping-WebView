@@ -98,37 +98,30 @@ const App = () => {
 
   return (
     <FCMContainer>
-        <StatusBar 
-          translucent={false}
-          backgroundColor={Platform.OS === "android" ? "white" : "white"}
-          barStyle="dark-content"
-        />
-      <View style={styles.container}>
-        <View style={styles.webView}>
-          <KeyboardAvoidingView
-            enabled={Platform.OS === "android"}
-            behavior="padding"
-            style={{ flex: 1 }}
-          >
-            <WebView 
-              source={{ uri: SITE_URL}}
-              ref={webViews}
-              onMessage={(event)=>onWebViewMessage(event)}
-              injectedJavaScript={injectedJavascript}
-              onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
-              onNavigationStateChange={onNavigationStateChange}
-              javaScriptEnabledAndroid={true}
-              allowFileAccess={true}
-              renderLoading={true}
-              mediaPlaybackRequiresUserAction={false}
-              setJavaScriptEnabled = {false}
-              scalesPageToFit={false}
-              originWhitelist={['*']}
-              onLoadEnd={alertHandler}
-            />
-          </KeyboardAvoidingView>
-        </View>
+      <View style={{ height: getStatusBarHeight(true), backgroundColor: "#7EBD42" }}>
+        <StatusBar translucent={false} barStyle="dark-content"/>
       </View>
+      <SafeAreaView style={styles.container}>
+        <View style={styles.webView}>
+          <StatusBar hidden={false} />
+          <WebView 
+            source={{ uri: SITE_URL}}
+            ref={webViews}
+            onMessage={(event)=>onWebViewMessage(event)}
+            injectedJavaScript={injectedJavascript}
+            onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
+            onNavigationStateChange={onNavigationStateChange}
+            javaScriptEnabledAndroid={true}
+            allowFileAccess={true}
+            renderLoading={true}
+            mediaPlaybackRequiresUserAction={false}
+            setJavaScriptEnabled = {false}
+            scalesPageToFit={false}
+            originWhitelist={['*']}
+            onLoadEnd={alertHandler}
+          />
+        </View>
+      </SafeAreaView>
     </FCMContainer>
   );
 };
@@ -140,8 +133,8 @@ const styles = StyleSheet.create({
     borderTopWidth:1,
     borderColor:"#eee",
     flex: 1,
-    backgroundColor: 'white',
-    marginTop: marginH,
+    //backgroundColor: 'white',
+    //marginTop: marginH,
   },
   webView: {
     flex: 12,

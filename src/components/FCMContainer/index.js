@@ -44,6 +44,7 @@ const FCMContainer = ({ children, onNotificationOpened }) => {
       notification.android.setChannelId(CHANNEL_ID);
 
       firebase.notifications().displayNotification(notification);
+      console.log(notification);
     });
     _notificationDisplayedListener = firebase.notifications().onNotificationDisplayed(() => {});
     _notificationOpenedListener = firebase
@@ -59,7 +60,7 @@ const FCMContainer = ({ children, onNotificationOpened }) => {
     console.log(fcmToken);
     try {
       const deviceUniqueId = DeviceInfo.getUniqueId();
-      const token = await AsyncStorage.setItem("token", fcmToken);
+      await AsyncStorage.setItem("token", fcmToken);
     } catch (error) {
       console.log('ERROR: _registerToken');
       console.log(error.response.data);
