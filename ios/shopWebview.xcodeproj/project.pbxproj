@@ -17,11 +17,13 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* shopWebviewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* shopWebviewTests.m */; };
 		30294C8E2BBFED0AAFC09C68 /* libPods-shopWebview-shopWebviewTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5051EF9D563146842154E2CD /* libPods-shopWebview-shopWebviewTests.a */; };
+		3934B8F124EE6AAC004F623F /* NotificationService.m in Sources */ = {isa = PBXBuildFile; fileRef = 3934B8F024EE6AAC004F623F /* NotificationService.m */; };
+		3934B8F524EE6AAC004F623F /* NotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3934B8ED24EE6AAC004F623F /* NotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		394C217B24C566FE00E1E983 /* SplashScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 394C217A24C566FE00E1E983 /* SplashScreen.storyboard */; };
 		39829ECB24CF317C003F6E1E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 39829ECA24CF317C003F6E1E /* GoogleService-Info.plist */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		9E4435AAF234D9D97BE358BB /* libPods-shopWebview-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 589F025F81B86D86DDE3835D /* libPods-shopWebview-tvOS.a */; };
-		E73D009C1E1138708C47B750 /* libPods-Service.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E7DF57683903E1AEB747FDDF /* libPods-Service.a */; };
+		DE160477A61E6E394C63F2EC /* libPods-NotificationServiceExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 758B1914DC843BFAE03D7326 /* libPods-NotificationServiceExtension.a */; };
 		E9CAD461009CB0FF01197319 /* libPods-shopWebview.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E9D8828DF34A9119139C41EC /* libPods-shopWebview.a */; };
 /* End PBXBuildFile section */
 
@@ -40,7 +42,28 @@
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
 			remoteInfo = "shopWebview-tvOS";
 		};
+		3934B8F324EE6AAC004F623F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3934B8EC24EE6AAC004F623F;
+			remoteInfo = NotificationServiceExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		3934B8E824EE4E1B004F623F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				3934B8F524EE6AAC004F623F /* NotificationServiceExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
@@ -56,14 +79,15 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = shopWebview/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = shopWebview/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = shopWebview/main.m; sourceTree = "<group>"; };
+		2C9E0EF6A3E202889F665625 /* Pods-NotificationServiceExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationServiceExtension.debug.xcconfig"; path = "Target Support Files/Pods-NotificationServiceExtension/Pods-NotificationServiceExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* shopWebview-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "shopWebview-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* shopWebview-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "shopWebview-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3934B87924ECE430004F623F /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		3934B87B24ECE430004F623F /* UserNotificationsUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotificationsUI.framework; path = System/Library/Frameworks/UserNotificationsUI.framework; sourceTree = SDKROOT; };
-		3934B8C024ECF8DE004F623F /* Service.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Service.appex; sourceTree = BUILT_PRODUCTS_DIR; };
-		3934B8C224ECF8DE004F623F /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
-		3934B8C324ECF8DE004F623F /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
-		3934B8C524ECF8DE004F623F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3934B8ED24EE6AAC004F623F /* NotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = NotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		3934B8EF24EE6AAC004F623F /* NotificationService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NotificationService.h; sourceTree = "<group>"; };
+		3934B8F024EE6AAC004F623F /* NotificationService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NotificationService.m; sourceTree = "<group>"; };
+		3934B8F224EE6AAC004F623F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		394C216A24C5626900E1E983 /* FontAwesome5_Solid.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome5_Solid.ttf; sourceTree = "<group>"; };
 		394C216B24C5626900E1E983 /* AntDesign.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = AntDesign.ttf; sourceTree = "<group>"; };
 		394C216C24C5626900E1E983 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
@@ -91,6 +115,8 @@
 		5DE2D25C1C9BE1E1DD77447C /* Pods-shopWebview-Service.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shopWebview-Service.release.xcconfig"; path = "Target Support Files/Pods-shopWebview-Service/Pods-shopWebview-Service.release.xcconfig"; sourceTree = "<group>"; };
 		5F7BDE0EB5C9A251B0BCCB31 /* Pods-shopWebview-shopWebviewTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shopWebview-shopWebviewTests.release.xcconfig"; path = "Target Support Files/Pods-shopWebview-shopWebviewTests/Pods-shopWebview-shopWebviewTests.release.xcconfig"; sourceTree = "<group>"; };
 		6DE1C0B3A1F9BE753445D12F /* Pods-shopWebview-shopWebviewTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shopWebview-shopWebviewTests.debug.xcconfig"; path = "Target Support Files/Pods-shopWebview-shopWebviewTests/Pods-shopWebview-shopWebviewTests.debug.xcconfig"; sourceTree = "<group>"; };
+		70BE55A57B5428616E873302 /* Pods-NotificationServiceExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NotificationServiceExtension.release.xcconfig"; path = "Target Support Files/Pods-NotificationServiceExtension/Pods-NotificationServiceExtension.release.xcconfig"; sourceTree = "<group>"; };
+		758B1914DC843BFAE03D7326 /* libPods-NotificationServiceExtension.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-NotificationServiceExtension.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = shopWebview/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		883C8E45FA45EAF270D80E44 /* Pods-shopWebview-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shopWebview-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-shopWebview-tvOSTests/Pods-shopWebview-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8F8C16A1F093D03A22CD5CE7 /* Pods-shopWebview.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-shopWebview.debug.xcconfig"; path = "Target Support Files/Pods-shopWebview/Pods-shopWebview.debug.xcconfig"; sourceTree = "<group>"; };
@@ -135,11 +161,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3934B8BD24ECF8DE004F623F /* Frameworks */ = {
+		3934B8EA24EE6AAC004F623F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E73D009C1E1138708C47B750 /* libPods-Service.a in Frameworks */,
+				DE160477A61E6E394C63F2EC /* libPods-NotificationServiceExtension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,18 +218,19 @@
 				3934B87924ECE430004F623F /* UserNotifications.framework */,
 				3934B87B24ECE430004F623F /* UserNotificationsUI.framework */,
 				E7DF57683903E1AEB747FDDF /* libPods-Service.a */,
+				758B1914DC843BFAE03D7326 /* libPods-NotificationServiceExtension.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		3934B8C124ECF8DE004F623F /* Service */ = {
+		3934B8EE24EE6AAC004F623F /* NotificationServiceExtension */ = {
 			isa = PBXGroup;
 			children = (
-				3934B8C224ECF8DE004F623F /* NotificationService.h */,
-				3934B8C324ECF8DE004F623F /* NotificationService.m */,
-				3934B8C524ECF8DE004F623F /* Info.plist */,
+				3934B8EF24EE6AAC004F623F /* NotificationService.h */,
+				3934B8F024EE6AAC004F623F /* NotificationService.m */,
+				3934B8F224EE6AAC004F623F /* Info.plist */,
 			);
-			path = Service;
+			path = NotificationServiceExtension;
 			sourceTree = "<group>";
 		};
 		394C216824C5619B00E1E983 /* Fonts */ = {
@@ -243,7 +270,7 @@
 				13B07FAE1A68108700A75B9A /* shopWebview */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* shopWebviewTests */,
-				3934B8C124ECF8DE004F623F /* Service */,
+				3934B8EE24EE6AAC004F623F /* NotificationServiceExtension */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D38E1283254237597FB3DC35 /* Pods */,
@@ -260,7 +287,7 @@
 				00E356EE1AD99517003FC87E /* shopWebviewTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* shopWebview-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* shopWebview-tvOSTests.xctest */,
-				3934B8C024ECF8DE004F623F /* Service.appex */,
+				3934B8ED24EE6AAC004F623F /* NotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -280,6 +307,8 @@
 				A0CE38F868C22736653E76DD /* Pods-Service.release.xcconfig */,
 				58437E28C1BB986C5998CAFF /* Pods-shopWebview-Service.debug.xcconfig */,
 				5DE2D25C1C9BE1E1DD77447C /* Pods-shopWebview-Service.release.xcconfig */,
+				2C9E0EF6A3E202889F665625 /* Pods-NotificationServiceExtension.debug.xcconfig */,
+				70BE55A57B5428616E873302 /* Pods-NotificationServiceExtension.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -318,10 +347,12 @@
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				2D1F4480CB7DD37775D89605 /* [CP] Copy Pods Resources */,
+				3934B8E824EE4E1B004F623F /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				3934B8F424EE6AAC004F623F /* PBXTargetDependency */,
 			);
 			name = shopWebview;
 			productName = shopWebview;
@@ -367,22 +398,22 @@
 			productReference = 2D02E4901E0B4A5D006451C7 /* shopWebview-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		3934B8BF24ECF8DE004F623F /* Service */ = {
+		3934B8EC24EE6AAC004F623F /* NotificationServiceExtension */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3934B8CB24ECF8DE004F623F /* Build configuration list for PBXNativeTarget "Service" */;
+			buildConfigurationList = 3934B8F624EE6AAC004F623F /* Build configuration list for PBXNativeTarget "NotificationServiceExtension" */;
 			buildPhases = (
-				3E46FAFA926CC4D5BC305026 /* [CP] Check Pods Manifest.lock */,
-				3934B8BC24ECF8DE004F623F /* Sources */,
-				3934B8BD24ECF8DE004F623F /* Frameworks */,
-				3934B8BE24ECF8DE004F623F /* Resources */,
+				D1DCDEC4DB2AFE00F3F7F025 /* [CP] Check Pods Manifest.lock */,
+				3934B8E924EE6AAC004F623F /* Sources */,
+				3934B8EA24EE6AAC004F623F /* Frameworks */,
+				3934B8EB24EE6AAC004F623F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = Service;
-			productName = Service;
-			productReference = 3934B8C024ECF8DE004F623F /* Service.appex */;
+			name = NotificationServiceExtension;
+			productName = NotificationServiceExtension;
+			productReference = 3934B8ED24EE6AAC004F623F /* NotificationServiceExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -412,7 +443,7 @@
 						ProvisioningStyle = Automatic;
 						TestTargetID = 2D02E47A1E0B4A5D006451C7;
 					};
-					3934B8BF24ECF8DE004F623F = {
+					3934B8EC24EE6AAC004F623F = {
 						CreatedOnToolsVersion = 11.6;
 						DevelopmentTeam = 49BJL63GK4;
 						ProvisioningStyle = Automatic;
@@ -436,7 +467,7 @@
 				00E356ED1AD99517003FC87E /* shopWebviewTests */,
 				2D02E47A1E0B4A5D006451C7 /* shopWebview-tvOS */,
 				2D02E48F1E0B4A5D006451C7 /* shopWebview-tvOSTests */,
-				3934B8BF24ECF8DE004F623F /* Service */,
+				3934B8EC24EE6AAC004F623F /* NotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -475,7 +506,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3934B8BE24ECF8DE004F623F /* Resources */ = {
+		3934B8EB24EE6AAC004F623F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -607,28 +638,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		3E46FAFA926CC4D5BC305026 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Service-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5E43B01E7092F14DD95E27F3 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -723,6 +732,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		D1DCDEC4DB2AFE00F3F7F025 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NotificationServiceExtension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -798,10 +829,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		3934B8BC24ECF8DE004F623F /* Sources */ = {
+		3934B8E924EE6AAC004F623F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3934B8F124EE6AAC004F623F /* NotificationService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -817,6 +849,11 @@
 			isa = PBXTargetDependency;
 			target = 2D02E47A1E0B4A5D006451C7 /* shopWebview-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
+		};
+		3934B8F424EE6AAC004F623F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3934B8EC24EE6AAC004F623F /* NotificationServiceExtension */;
+			targetProxy = 3934B8F324EE6AAC004F623F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -871,12 +908,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = shopWebview/shopWebview.entitlements;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 49BJL63GK4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = shopWebview/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -897,12 +934,12 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = shopWebview/shopWebview.entitlements;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = 49BJL63GK4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = shopWebview/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2.1;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -1025,9 +1062,9 @@
 			};
 			name = Release;
 		};
-		3934B8C924ECF8DE004F623F /* Debug */ = {
+		3934B8F724EE6AAC004F623F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 104B1E359AEA44E31B1B6B2C /* Pods-Service.debug.xcconfig */;
+			baseConfigurationReference = 2C9E0EF6A3E202889F665625 /* Pods-NotificationServiceExtension.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1036,24 +1073,26 @@
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 5;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = 49BJL63GK4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = Service/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				INFOPLIST_FILE = NotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 1.2.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.shopWebview.Service;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.shopWebview.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
-		3934B8CA24ECF8DE004F623F /* Release */ = {
+		3934B8F824EE6AAC004F623F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A0CE38F868C22736653E76DD /* Pods-Service.release.xcconfig */;
+			baseConfigurationReference = 70BE55A57B5428616E873302 /* Pods-NotificationServiceExtension.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
@@ -1063,14 +1102,16 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_STYLE = Automatic;
 				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 5;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = 49BJL63GK4;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = Service/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				INFOPLIST_FILE = NotificationServiceExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				MARKETING_VERSION = 1.2.1;
 				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.shopWebview.Service;
+				PRODUCT_BUNDLE_IDENTIFIER = org.reactjs.native.example.shopWebview.NotificationServiceExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1231,11 +1272,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		3934B8CB24ECF8DE004F623F /* Build configuration list for PBXNativeTarget "Service" */ = {
+		3934B8F624EE6AAC004F623F /* Build configuration list for PBXNativeTarget "NotificationServiceExtension" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3934B8C924ECF8DE004F623F /* Debug */,
-				3934B8CA24ECF8DE004F623F /* Release */,
+				3934B8F724EE6AAC004F623F /* Debug */,
+				3934B8F824EE6AAC004F623F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

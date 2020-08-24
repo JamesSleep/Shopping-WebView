@@ -1,5 +1,16 @@
 import React, { useState, useRef, useEffect } from "react";
-import { View, StyleSheet, KeyboardAvoidingView, BackHandler, AsyncStorage, Linking, Alert } from "react-native";
+import { 
+  View, 
+  StyleSheet, 
+  KeyboardAvoidingView, 
+  BackHandler, 
+  AsyncStorage, 
+  Linking, 
+  Alert,
+  ToastAndroid,
+  Share,
+  Slider
+} from "react-native";
 import WebView from "react-native-webview";
 import { connect } from "react-redux";
 import ActionCreators from "../redux/action";
@@ -8,21 +19,25 @@ import axios from 'axios';
 
 let SITE_URL = "https://3456shop.com/";
 
-function WebViews( props, context ) {
-  console.log("WebView props:", props);
+function WebViews( props ) {
   const [urls, seTurls] = useState(SITE_URL);
+  const [webState, setWebState] = useState({
+    url: SITE_URL,
+    loading: false,
+    canGoBack: false,
+  });
   useEffect(() => {
-    if(props.url !== "" || props.url !== SITE_URL) {
+    if(props.url !== "" && props.url !== SITE_URL) {
       let getURL = "";
       getURL = props.url;
       webViews.current.injectJavaScript(`window.location.href = '/${getURL.substr(21,getURL.length-1)}';`)
     }
-  }, [props.url]);
+
+    BackHandler.addEventListener("hardwareBackPress", handleBackButton);
+    return () =>
+      BackHandler.removeEventListener("hardwareBackPress", handleBackButton);
+  }, [props.url, webState]);
   const webViews = useRef();
-  const page_goBack = () => webViews.current.goBack();
-  const page_home = () => webViews.current.injectJavaScript("window.location.href = '/';");
-  const page_goForward = () => webViews.current.goForward();
-  const category = () => webViews.current.injectJavaScript(`document.getElementById('quick_menu').click();`);
   const onShouldStartLoadWithRequest = (e) => {
     let wurl = e.url;
     let rs = true;
@@ -47,14 +62,14 @@ function WebViews( props, context ) {
     return rs;
   }
   const onNavigationStateChange = (webViewState)=>{
-    console.log("stateURL :", webViewState.url);
-    seTurls(webViewState.url);
-    BackHandler.addEventListener('hardwareBackPress', handleBackButton);
+    setWebState({...webState,
+      url: webViewState.url,
+      canGoBack: webViewState.canGoBack,
+      loading: webViewState.loading
+    });
   }
   const handleBackButton = () => {
-    console.log("setURL :", urls);
-    webViews.current.goBack();
-    /* if(urls === SITE_URL){
+    if(webState.url === SITE_URL){
       Alert.alert(
         '어플을 종료할까요?','',
         [   
@@ -63,8 +78,8 @@ function WebViews( props, context ) {
         ]
       );
     }else {
-      webViews.current.goBack(); 
-    } */
+      webViews.current.goBack();
+    }
     return true;
   }
   const alertHandler = () => {
@@ -79,24 +94,13 @@ function WebViews( props, context ) {
     );
   }
   const injectedJavascript = '(function() { window.postMessage = function(data) {window.ReactNativeWebView.postMessage(data);};})()';
-  
-  const urlHandler = async () => {
-    await AsyncStorage.getItem("FCM_URL")
-    .then(response => {
-      const data = JSON.parse(response);
-      console.log("storage :", data.url);
-      seTurls(data.url);
-    });
-  }
 
   const onWebViewMessage = async event => {
     console.log("Message received from webview");
     console.log(event.nativeEvent.data);
     const data = JSON.stringify(event.nativeEvent.data);
-    if(data.toString().indexOf("user") === -1) {
-      if(Platform.OS === "android") ToastAndroid.show(event.nativeEvent.data, ToastAndroid.SHORT);
-      else Alert.alert(event.nativeEvent.data);
-    } else {
+
+    if(data.toString().indexOf("user_index") > -1) {
       const user_index = data.substring(14, data.length - 1);
       const form = new FormData();
       const token = await AsyncStorage.getItem('token');
@@ -107,6 +111,9 @@ function WebViews( props, context ) {
       .then(res => {
         console.log(res);
       })
+    } else {
+      if(Platform.OS === "android") ToastAndroid.show(event.nativeEvent.data, ToastAndroid.SHORT);
+      else Alert.alert(event.nativeEvent.data);
     }
   }
 
@@ -121,7 +128,6 @@ function WebViews( props, context ) {
           ref={webViews}
           onMessage={(event)=>onWebViewMessage(event)}
           injectedJavaScript={injectedJavascript}
-          onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
           onNavigationStateChange={onNavigationStateChange}
           javaScriptEnabledAndroid={true}
           allowFileAccess={true}
@@ -129,7 +135,9 @@ function WebViews( props, context ) {
           mediaPlaybackRequiresUserAction={false}
           setJavaScriptEnabled = {false}
           sharedCookiesEnabled={true}
+          onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
           allowsInlineMediaPlayback="true"
+          allowsBackForwardNavigationGestures
           scalesPageToFit={false}
           originWhitelist={['*']}
           onLoadEnd={alertHandler}
@@ -183,5 +191,5 @@ const styles = StyleSheet.create({
       fontSize:25,
   },
 });
-//export default WebViews;
+
 export default connect(mapStateToProps, mapDispatchToProps)(WebViews);

@@ -35,6 +35,6 @@ target 'shopWebview-tvOS' do
   end
 end
 
-target 'Service' do
+target 'NotificationServiceExtension' do
   pod 'Firebase/Messaging'
 end

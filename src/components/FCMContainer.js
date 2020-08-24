@@ -20,7 +20,8 @@ const FCMContainer = ({ children, onNotificationOpened, url, UrlUpdate }) => {
   const urlHandler = url => {
     console.log("fcmDATA :", url);
     UrlUpdate("");
-    UrlUpdate(url);
+    if(url !== undefined) 
+      UrlUpdate(url);
   }
 
   const _registerMessageListener = () => {

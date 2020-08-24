@@ -1,8 +1,8 @@
 //
 //  NotificationService.h
-//  Service
+//  NotificationServiceExtension
 //
-//  Created by dongha on 2020/08/19.
+//  Created by dongha on 2020/08/20.
 //
 
 #import <UserNotifications/UserNotifications.h>

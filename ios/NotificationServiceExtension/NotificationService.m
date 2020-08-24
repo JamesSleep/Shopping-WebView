@@ -1,13 +1,12 @@
 //
 //  NotificationService.m
-//  Service
+//  NotificationServiceExtension
 //
-//  Created by dongha on 2020/08/19.
+//  Created by dongha on 2020/08/20.
 //
 
 #import "NotificationService.h"
 #import "RNFirebaseMessaging.h"
-@import Firebase;
 
 @interface NotificationService ()
 
@@ -20,16 +19,12 @@
 
 - (void)didReceiveNotificationRequest:(UNNotificationRequest *)request withContentHandler:(void (^)(UNNotificationContent * _Nonnull))contentHandler {
     self.contentHandler = contentHandler;
-      self.bestAttemptContent = [request.content mutableCopy];
-
-      // Modify the notification content here as you wish
-      self.bestAttemptContent.title = [NSString stringWithFormat:@"%@ [modified]",
-      self.bestAttemptContent.title];
-
-    // Call FIRMessaging extension helper API.
-    [[FIRMessaging extensionHelper] populateNotificationContent:self.bestAttemptContent
-                                              withContentHandler:contentHandler];
-
+    self.bestAttemptContent = [request.content mutableCopy];
+    
+    // Modify the notification content here...
+    self.bestAttemptContent.title = [NSString stringWithFormat:@"%@", self.bestAttemptContent.title];
+    
+    [[FIRMessaging extensionHelper] populateNotificationContent:self.bestAttemptContent withContentHandler:contentHandler];
 }
 
 - (void)serviceExtensionTimeWillExpire {

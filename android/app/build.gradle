@@ -135,9 +135,10 @@ android {
         applicationId "com.shop3456.newapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 13
-        versionName "1.5"
+        versionCode 17
+        versionName "1.5.4"
         targetSdkVersion 29
+        multiDexEnabled true
     }
     /* splits {
         abi {
@@ -213,6 +214,7 @@ dependencies {
     implementation 'me.leolin:ShortcutBadger:1.1.21@aar'
 
     implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.0.0"
+    
 
     debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}") {
       exclude group:'com.facebook.fbjni'
@@ -225,6 +227,8 @@ dependencies {
     debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}") {
         exclude group:'com.facebook.flipper'
     }
+
+    compile project(':react-native-version-check')
 
     if (enableHermes) {
         def hermesPath = "../../node_modules/hermes-engine/android/";
