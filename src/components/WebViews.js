@@ -8,8 +8,11 @@ import {
   Linking, 
   Alert,
   ToastAndroid,
-  Share,
-  Slider
+  ActivityIndicator,
+  Dimensions,
+  TouchableWithoutFeedback,
+  Keyboard,
+  Platform
 } from "react-native";
 import WebView from "react-native-webview";
 import { connect } from "react-redux";
@@ -20,23 +23,28 @@ import axios from 'axios';
 let SITE_URL = "https://3456shop.com/";
 
 function WebViews( props ) {
-  const [urls, seTurls] = useState(SITE_URL);
+  console.log("redux url :", props.url);
+  const [urls, seTurls] = useState(
+    props.url !== "" ? props.url : SITE_URL
+  );
+  const [isLoading, setIsLoading] = useState(true);
   const [webState, setWebState] = useState({
     url: SITE_URL,
     loading: false,
     canGoBack: false,
   });
   useEffect(() => {
-    if(props.url !== "" && props.url !== SITE_URL) {
-      let getURL = "";
-      getURL = props.url;
+    console.log("current URL:",urls);
+    if(props.url !== "" && props.url !== urls) {
+      const getURL = props.url
       webViews.current.injectJavaScript(`window.location.href = '/${getURL.substr(21,getURL.length-1)}';`)
+      seTurls(getURL);
     }
 
     BackHandler.addEventListener("hardwareBackPress", handleBackButton);
     return () =>
       BackHandler.removeEventListener("hardwareBackPress", handleBackButton);
-  }, [props.url, webState]);
+  }, [webState, props.url]);
   const webViews = useRef();
   const onShouldStartLoadWithRequest = (e) => {
     let wurl = e.url;
@@ -83,6 +91,9 @@ function WebViews( props ) {
     return true;
   }
   const alertHandler = () => {
+    /* setTimeout(()=> {
+      setIsLoading(true);
+    }, 300) */
     webViews.current.injectJavaScript(
       `
       setTimeout(() => {
@@ -116,34 +127,58 @@ function WebViews( props ) {
       else Alert.alert(event.nativeEvent.data);
     }
   }
+  const loading = () => {
+    return (
+      <View 
+        style={{
+          position: "absolute",
+          zIndex: 10,
+          width: "100%",
+          height: "100%",
+          justifyContent: "center", 
+          alignItems: "center",
+          backgroundColor: "white"
+        }}
+      >
+        <ActivityIndicator 
+          animating = {true}
+          color = '#bc2b78'
+          size = "large"
+          style = {{ 
+            width: Dimensions.get("screen").width/3,
+            height: Dimensions.get("screen").width/3
+          }}
+          hidesWhenStopped={true} 
+        />
+      </View>
+    )
+  }
 
   return (
-    <View style={styles.webView}>
-      <KeyboardAvoidingView
-        enabled
-        style={{ flex: 1 }}
-      >
-        <WebView 
-          source={{ uri: urls}}
-          ref={webViews}
-          onMessage={(event)=>onWebViewMessage(event)}
-          injectedJavaScript={injectedJavascript}
-          onNavigationStateChange={onNavigationStateChange}
-          javaScriptEnabledAndroid={true}
-          allowFileAccess={true}
-          renderLoading={true}
-          mediaPlaybackRequiresUserAction={false}
-          setJavaScriptEnabled = {false}
-          sharedCookiesEnabled={true}
-          onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
-          allowsInlineMediaPlayback="true"
-          allowsBackForwardNavigationGestures
-          scalesPageToFit={false}
-          originWhitelist={['*']}
-          onLoadEnd={alertHandler}
-        />
-      </KeyboardAvoidingView>
-    </View>
+    <KeyboardAvoidingView
+      style={styles.webView}
+      behavior={Platform.OS === "ios" && "padding"}
+      keyboardVerticalOffset={Platform.OS === 'ios' ? 40 : 0}
+    >
+      <WebView 
+        source={{ uri: urls}}
+        ref={webViews}
+        onMessage={(event)=>onWebViewMessage(event)}
+        injectedJavaScript={injectedJavascript}
+        onNavigationStateChange={onNavigationStateChange}
+        javaScriptEnabledAndroid={true}
+        allowFileAccess={true}
+        mediaPlaybackRequiresUserAction={false}
+        setJavaScriptEnabled = {false}
+        sharedCookiesEnabled={true}
+        onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
+        allowsInlineMediaPlayback="true"
+        allowsBackForwardNavigationGestures
+        scalesPageToFit={false}
+        originWhitelist={['*']}
+        onLoadEnd={alertHandler}
+      />
+    </KeyboardAvoidingView>
   )
 }
 
@@ -171,7 +206,7 @@ const styles = StyleSheet.create({
     marginTop: marginH,
   },
   webView: {
-    flex: 12,
+    flex: 1,
   },
   nav: {
     flex: 1,

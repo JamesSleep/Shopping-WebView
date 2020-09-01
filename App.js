@@ -23,11 +23,10 @@ import VersionCheck from 'react-native-version-check';
 const App = () => {
   const [modalVisible, setModalVisible] = useState(false);
   useEffect(()=>{
+    cheackUpdate();
     setTimeout(() => {
       SplashScreen.hide();
-      cheackUpdate();
-    }, 500);
-    
+    }, 2500);   
   },[]);
 
   const cheackUpdate = async () => {
