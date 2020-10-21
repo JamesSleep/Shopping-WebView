@@ -61,11 +61,18 @@ const App = () => {
   return (
     <Provider store={createStore(reducer)}>
       <FCMContainer>
-        { Platform.OS === "ios" ? (
+        {/* { Platform.OS === "ios" ? (
           <View style={{ width: "100%", height: getStatusBarHeight(true), backgroundColor: "#7EBD42" }}>
             <StatusBar />
           </View>
         ) : (
+          <StatusBar 
+            translucent={false}
+            backgroundColor="white"
+            barStyle="dark-content"
+          />
+        )} */}
+        { Platform.OS === "android" && (
           <StatusBar 
             translucent={false}
             backgroundColor="white"

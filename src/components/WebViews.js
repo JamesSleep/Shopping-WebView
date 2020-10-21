@@ -4,7 +4,6 @@ import {
   StyleSheet, 
   KeyboardAvoidingView, 
   BackHandler, 
-  AsyncStorage, 
   Linking, 
   Alert,
   ToastAndroid,
@@ -17,13 +16,16 @@ import {
 import WebView from "react-native-webview";
 import { connect } from "react-redux";
 import ActionCreators from "../redux/action";
+import AsyncStorage from "@react-native-community/async-storage";
+import CookieManager from "@react-native-community/cookies";
 import { getStatusBarHeight } from 'react-native-status-bar-height';
 import axios from 'axios';
 
 let SITE_URL = "https://3456shop.com/";
 
 function WebViews( props ) {
-  console.log("redux url :", props.url);
+  const webViews = useRef();
+  //console.log("redux url :", props.url);
   const [urls, seTurls] = useState(
     props.url !== "" ? props.url : SITE_URL
   );
@@ -33,8 +35,22 @@ function WebViews( props ) {
     loading: false,
     canGoBack: false,
   });
+  const [cookieString, setCookieString] = useState("");
   useEffect(() => {
-    console.log("current URL:",urls);
+    //console.log("current URL:",urls);
+    /* getSavedCookies()
+    .then(async (savedCookies) => {
+      let cookiesString = jsonCookiesToCookieString(savedCookies);
+      const PHPSESSID = await AsyncStorage.getItem('PHPSESSID');
+      if (PHPSESSID) {
+        cookiesString += `PHPSESSID=${PHPSESSID};`;
+      }
+      setCookieString(cookiesString);
+    })
+    .catch((e) => {
+      console.log("please login");
+    }); */
+
     if(props.url !== "" && props.url !== urls) {
       const getURL = props.url
       webViews.current.injectJavaScript(`window.location.href = '/${getURL.substr(21,getURL.length-1)}';`)
@@ -45,7 +61,7 @@ function WebViews( props ) {
     return () =>
       BackHandler.removeEventListener("hardwareBackPress", handleBackButton);
   }, [webState, props.url]);
-  const webViews = useRef();
+
   const onShouldStartLoadWithRequest = (e) => {
     let wurl = e.url;
     let rs = true;
@@ -70,6 +86,7 @@ function WebViews( props ) {
     return rs;
   }
   const onNavigationStateChange = (webViewState)=>{
+    //console.log("stateURL :", webViewState.url);
     setWebState({...webState,
       url: webViewState.url,
       canGoBack: webViewState.canGoBack,
@@ -90,10 +107,27 @@ function WebViews( props ) {
     }
     return true;
   }
-  const alertHandler = () => {
-    /* setTimeout(()=> {
-      setIsLoading(true);
-    }, 300) */
+
+  const jsonCookiesToCookieString = (json) => {
+    let cookiesString = '';
+    for (let [key, value] of Object.entries(json)) {
+      cookiesString += `${key}=${value.value}; `;
+    }
+    return cookiesString;
+  };
+
+  const getSavedCookies = async () => {
+    try {
+      let value = await AsyncStorage.getItem('savedCookies');
+      if (value !== null) {
+        return Promise.resolve(JSON.parse(value));
+      }
+    } catch (error) {
+      return {};
+    }
+  }
+
+  const alertHandler = async () => {
     webViews.current.injectJavaScript(
       `
       setTimeout(() => {
@@ -103,13 +137,34 @@ function WebViews( props ) {
       }, 100);
       `
     );
+    const data = await AsyncStorage.getItem('savedCookies');
+    const { 
+      PHPSESSID: {
+        domain, httpOnly, name, secure, value, version
+      }
+    } = JSON.parse(data);
+    const path = "/" + webState.url.substr(21,webState.url.length-1);
+    const newCookie = {
+      domain,
+      httpOnly,
+      name,
+      secure,
+      value,
+      version,
+      path
+    }
+
+    CookieManager.set(SITE_URL, newCookie, true);
   }
+
   const injectedJavascript = '(function() { window.postMessage = function(data) {window.ReactNativeWebView.postMessage(data);};})()';
 
   const onWebViewMessage = async event => {
     console.log("Message received from webview");
     console.log(event.nativeEvent.data);
     const data = JSON.stringify(event.nativeEvent.data);
+    
+    //console.log(data.user_index);
 
     if(data.toString().indexOf("user_index") > -1) {
       const user_index = data.substring(14, data.length - 1);
@@ -120,7 +175,15 @@ function WebViews( props ) {
       const url = "https://3456shop.com/api/app.php";
       axios.post(url,form)
       .then(res => {
-        console.log(res);
+        if (res.data.resultItem === "성공") {
+          CookieManager.getAll(true).then((res) => {
+            AsyncStorage.setItem('savedCookies', JSON.stringify(res));
+            if (res.PHPSESSID) {
+              console.log(res.PHPSESSID);
+              AsyncStorage.setItem('PHPSESSID', res.PHPSESSID.value);
+            }
+          });       
+        }
       })
     } else {
       if(Platform.OS === "android") ToastAndroid.show(event.nativeEvent.data, ToastAndroid.SHORT);
@@ -161,22 +224,29 @@ function WebViews( props ) {
       keyboardVerticalOffset={Platform.OS === 'ios' ? 40 : 0}
     >
       <WebView 
-        source={{ uri: urls}}
+        source={{ 
+          uri: urls, 
+          headers: {
+            Cookie: cookieString,
+          } 
+        }}
         ref={webViews}
-        onMessage={(event)=>onWebViewMessage(event)}
-        injectedJavaScript={injectedJavascript}
-        onNavigationStateChange={onNavigationStateChange}
-        javaScriptEnabledAndroid={true}
         allowFileAccess={true}
+        allowsBackForwardNavigationGestures
+        allowsInlineMediaPlayback="true"
+        domStorageEnabled={true}
+        injectedJavaScript={injectedJavascript}
+        javaScriptEnabledAndroid={true}
         mediaPlaybackRequiresUserAction={false}
+        onLoadEnd={alertHandler}
+        onMessage={(event)=>onWebViewMessage(event)}
+        onNavigationStateChange={onNavigationStateChange}
+        onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
+        originWhitelist={['*']}
+        scalesPageToFit={true}
         setJavaScriptEnabled = {false}
         sharedCookiesEnabled={true}
-        onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
-        allowsInlineMediaPlayback="true"
-        allowsBackForwardNavigationGestures
-        scalesPageToFit={false}
-        originWhitelist={['*']}
-        onLoadEnd={alertHandler}
+        useWebKit={true}
       />
     </KeyboardAvoidingView>
   )
