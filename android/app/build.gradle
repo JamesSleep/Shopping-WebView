@@ -135,8 +135,8 @@ android {
         applicationId "com.shop3456.newapp"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 20
-        versionName "1.5.7"
+        versionCode 21
+        versionName "1.5.8"
         targetSdkVersion 29
         multiDexEnabled true
     }
