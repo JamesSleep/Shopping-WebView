@@ -186,8 +186,12 @@ function WebViews( props ) {
         }
       })
     } else {
-      if(Platform.OS === "android") ToastAndroid.show(event.nativeEvent.data, ToastAndroid.SHORT);
-      else Alert.alert(event.nativeEvent.data);
+      if ((event.nativeEvent.data).toString() !== "[object Object]" &&
+      (event.nativeEvent.data).toString() !== "undefined"
+      ) {
+        if(Platform.OS === "android") ToastAndroid.show(event.nativeEvent.data, ToastAndroid.SHORT);
+        else Alert.alert(event.nativeEvent.data);
+      }
     }
   }
   const loading = () => {
